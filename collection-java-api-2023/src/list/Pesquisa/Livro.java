@@ -39,7 +39,7 @@ public class Livro {
 
     @Override
     public String toString() {
-        return "Livro [titulo=" + titulo + ", autor=" + autor + ", anoPublicacao=" + anoPublicacao + "]";
+        return "titulo=" + titulo + ", autor=" + autor + ", anoPublicacao=" + anoPublicacao;
     }
 
     

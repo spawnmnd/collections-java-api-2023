@@ -10,7 +10,7 @@ public class CatalogoLivros {
     public CatalogoLivros() {this.livroList = new ArrayList<>();}
 
     public void adicionarLivro(String titulo, String autor, int anoPublicacao){
-        livroList.add(new Livro(titulo, titulo, anoPublicacao));
+        livroList.add(new Livro(titulo, autor, anoPublicacao));
     }
 
     public List<Livro> pesquisaPorAutor(String autor){
@@ -34,7 +34,8 @@ public class CatalogoLivros {
                 }
             }
         }
-        return livrosPorIntervaloAnos;
+        if(livrosPorIntervaloAnos.isEmpty()) System.out.println("Nenhum título encontrado neste intervalo de datas.");
+        return livrosPorIntervaloAnos;        
     }
 
     public Livro pesquisaPorTitulo(String titulo){
@@ -48,5 +49,29 @@ public class CatalogoLivros {
             }
         }
         return livroPorTitulo;
+    }
+
+    
+
+    @Override
+    public String toString() {
+        return "Catalogo de Livros " + livroList ;
+    }
+
+    public static void main(String[] args) {
+        CatalogoLivros catalogoLivros = new CatalogoLivros();
+
+        catalogoLivros.adicionarLivro("Livro 1", "Autor 1", 2020);
+        catalogoLivros.adicionarLivro("Livro 1", "Autor 2", 2021);
+        catalogoLivros.adicionarLivro("Livro 2", "Autor 2", 2022);
+        catalogoLivros.adicionarLivro("Livro 3", "Autor 3", 2023);
+        catalogoLivros.adicionarLivro("Livro 4", "Autor 4", 1994);
+        
+        System.out.println("--------------------------------------");
+        System.out.println(catalogoLivros.pesquisaPorAutor("Autor 2"));
+        System.out.println("--------------------------------------");
+        System.out.println(catalogoLivros.pesquisaPorIntervaloAnos(2024, 2022));
+        System.out.println("--------------------------------------");
+        System.out.println(catalogoLivros.pesquisaPorTitulo("Livro 1"));
     }
 }
